@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Views{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    {% for td in user.todolist.all %}
+      <p><a href="/{{td.id}}">{{td.name}}</a></p>
+    {% endfor %}
+  {% else %}
+    <p>You are not logged in. Login <a href="/login">here</a> or Register <a href="/register">here</a></p>
+  {% endif %}
+
+{% endblock %}
